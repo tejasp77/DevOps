@@ -7,6 +7,7 @@ To list chart repositories
 ```bash
 helm repo list
 ```
+
 To add a chart repository
 
 ```bash
