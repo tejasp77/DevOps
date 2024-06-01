@@ -415,6 +415,176 @@ helm template my-first-chart
 
 ![image](https://github.com/tejasp77/DevOps/assets/165159032/94257ad3-d9cc-45d4-b463-44f37efdb274)
 
+---
+
+**Pipe function template**
+
+- This pipe function `|` will chain these functions or data and it will supply the first function output as the input to the next
+  function. The particular function will generate some input and if we are putting pipe after this and putting another function,
+  then the output of this function will be supplied as the input to this function.
+
+  Added customblock in values.yml file. Keep email element as blank.
+    
+  ![image](https://github.com/tejasp77/DevOps/assets/165159032/caa0783d-f4af-472c-8b3a-1cec3503ad23)
+
+  Added template action to access customblock from values.yml file
+    
+  ![image](https://github.com/tejasp77/DevOps/assets/165159032/69923f25-6a94-4d1f-aca6-da7821cdd166)
+    
+  Run the helm template command and check the deployment.yml file
+    
+  ![image](https://github.com/tejasp77/DevOps/assets/165159032/757472fd-4e97-46f2-8eef-7f08539be1c9)
+    
+  We are getting the output with pipe functions.
+
+---
+
+**nindent function template**
+
+-  This function basically provide a new line and indentation of defined argument. When we are defining an indent for it means
+   new line indentation with for space, new line indentation. For example, `nindent 4` this will provide new line indentation
+   with 4 spaces.
+
+   Make changes in deployment.yml by adding nindent function
+
+   ![image](https://github.com/tejasp77/DevOps/assets/165159032/89dc9e5e-9acf-4181-9ee8-9b9ca4f0eb5a)
+
+   Run the helm template command and check the deployment.yml file
+
+   ![image](https://github.com/tejasp77/DevOps/assets/165159032/73cc4a2f-9430-41df-a633-394b16452326)
+
+   We are getting output with indendation function.
+   
+---
+**if conditional logic in template**
+
+Make changes in values.yml. Keep name element as boolean value.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/f2f46ede-b1ee-4f82-9c66-82f9769a3a2e)
+
+Make changes in deployment.yml file by adding if contion 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/63da96cb-70d9-45e2-9c71-942fa73faa4f)
+
+Run the helm template command and check the deployment.yml 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/acc39c59-09bf-4827-b7ca-67baee853e71)
+
+Getting if condition output as expected with true value.
+
+Edit the values.yml file and set to false
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/10309ac2-9f5e-463b-9fe5-83a9d378a6d8)
+
+Run the helm template command and check the deployment.yml 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/5e36efac-6682-4b12-a51b-c923ea3d45f9)
+
+Getting if condition output as expected with false value.
+
+Edit the values.yml file and add the else condition.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/c1718a2b-d469-4d4a-a286-c0c2ecc4e168)
+
+Run the helm template command and check the deployment.yml 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/4c9b2e14-d304-428e-9c65-f164820ff3ae)
+
+Getting  if condition output as expected with false value
+
+---
+
+**Typecast values to YAML template using with function**
+
+Edit the values.yaml file and add list of names
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/033392ce-68c0-412f-b6e8-ab84303f9490)
+
+Edit the deployment.yml file and add the with function with typecast toYaml in template action code block.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/a7386736-6d9d-46e1-9ed4-0546daa7c312)
+
+Run the helm template commands and check the deployment.yml 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/69d8bb01-0d81-4123-8789-f1d2180ef270)
+
+Getting the expected output using with function.
+
+Edit the values.yml file and keep name element as empty array
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/a511d1cb-f407-4eb4-a1f8-7acf0b8d2f44)
+
+Edit the deployment.yml and add the author element and else condition in template action code block.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/873ba516-c242-4076-afcc-eb1abc717b24)
+
+Run the helm template and check
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/11ac33db-0381-4a1c-afbd-2eea365351d6)
+
+Getting expected output.
+
+---
+
+**Variables in templates**
+
+Edit deployment.yml file and add the variable and pass in if condtion within template action. 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/5ea3a642-b20a-4c37-92e0-e4db8896a49e)
+
+Run the helm template command and check
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/5fb41206-ec83-4c33-b9d3-fe47e368535f)
+
+Getting output as expected.
+
+View the values.yml and use autoscaling element
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/47d88a1d-ae24-4855-b8a3-bb031bb5658d)
+
+Edit the deployment.yml and replace the variable value with autoscaling value.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/cd8f8f60-5215-4ee8-9dfe-710b3f430dc4)
+
+Run the helm template command and check
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/f137fa0c-17b3-4e26-bb04-bd4c155746d0)
+
+Getting output as expected.
+
+---
+**Loops in template**
+
+Edit the deployment.yml file and add the range iteration
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/7b4bc713-f9ca-40d4-9e97-1dbf3d9c4531)
+
+Run the helm template command and check
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/af77b5d9-72f1-4b4b-bc45-357332f98ce4)
+
+Getting expected output.
+
+View the values.yml and use the image dictionary element
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/c8e6df9d-92c5-49d5-8780-9086fcdb3716)
+
+Edit the deployment.yml file and add the key value in 3rd range iteration
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/67cb4070-cab4-4a65-8ac8-8251ae48f4a5)
+
+Run the deployment.yml file and check
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/5cbaff72-3b1c-453f-8ab3-f0213bd315f5)
+
+Getting expected output.
+
+---
+
+**Template Validation**
+
+---
+
 [Template Functions and Pipelines](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/)
 
 [Template functions list](https://helm.sh/docs/chart_template_guide/function_list/)
