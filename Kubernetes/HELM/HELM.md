@@ -581,7 +581,45 @@ Getting expected output.
 
 ---
 
-**Template Validation**
+**Template Validation Commands**
+
+- If we have some syntactical error in templates that could be identified using the `helm lint` and `helm template` command.
+
+- `helm install` using `--dry-run` command validates the object, the YAML object with the Kubernetes that that particular object is a deployable or not. In addtion to this it also validates syntactical error in templates.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/249f49fc-2351-4cfe-b626-d8ed8f5564d5)
+
+---
+
+**Chart Dependencies**
+
+The the use case is whenever we are deploying the web application with the helm chart, the backend application should also get deployed. This can be done using chart dependency. 
+
+For example, we are working on the web application chart, but web application chart itself dependent on the backend chart. So, in our web application chart and in the dependency, we will mention the back end chart. To add dependencies in helm chart, we need add dependencies element in Chart.yml file.
+
+Edit the chart.yaml and the depenedencies element. For two backend applications with mysql and rabbitmq.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/f4db9da0-28de-412d-bdac-bff28bcb0960)
+
+To update charts/ based on the contents of Chart.yaml
+
+```bash
+helm dependency update my-first-chart
+```
+
+This command verifies that the required charts, as expressed in 'Chart.yaml', are present in 'charts/' and are at an acceptable version. It will pull down the latest charts that satisfy the dependencies, and clean up old dependencies.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/ec009a1e-4f49-4f39-b745-da68bd1557d0)
+
+Run the helm install command 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/7e706f1c-7315-4339-a1a6-d66f62182fde)
+
+Run the kubectl get pods command
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/755a2a0f-8ec5-4197-82e4-01902ead717a)
+
+We can see dependencies are installed.
 
 ---
 
