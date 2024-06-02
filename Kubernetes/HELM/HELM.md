@@ -652,11 +652,23 @@ Add the condition for rabbitmq as well in Chart.yml
 
 We will get the same output.
 
+**Pass values to dependies at runtime**
 
+Check default values for mysql from values.yml file
 
+![image](https://github.com/tejasp77/DevOps/assets/165159032/fb1b8fe4-f10f-4fd3-b3f5-39673b31c21a)
 
+![image](https://github.com/tejasp77/DevOps/assets/165159032/31c470b8-1c69-498c-b623-08e7d2d6423a)
 
+Edit values.yml file and add parameters for mysql element
 
+![image](https://github.com/tejasp77/DevOps/assets/165159032/824ee670-19c1-467c-83b7-d7aaa6f82c36)
+
+Run the helm install command and check the service
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/7315fcce-9a1e-47e2-96d9-8a27a41420c3)
+
+Getting output as expected.
 
 ---
 
