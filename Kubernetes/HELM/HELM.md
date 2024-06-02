@@ -621,7 +621,45 @@ Run the kubectl get pods command
 
 We can see dependencies are installed.
 
+**Conditional Chart Dependencies**
+
+Edit Chart.yml and add the condition for msql element
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/31ed81ac-1434-4165-bd90-2fc88557bca9)
+
+Edit values.yml and add mysql, rabbitmq elements
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/29610146-6c98-4ecd-83d3-2871a6c98782)
+
+
+Run the helm install command and getting error
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/e0d5996a-b641-49ba-9a38-1cd578c0535c)
+
+Uninstall the release and run again.
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/f6f6c0e4-9c47-4b0b-80fe-1b61042c0994)
+
+check pods for mysql
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/167a0c30-1c06-49fd-8f08-b4ba4639ef05)
+
+Getting output as expected.
+
+Add the condition for rabbitmq as well in Chart.yml
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/2748c6e4-d37f-4e47-8e8a-1e898ca73e6b)
+
+We will get the same output.
+
+
+
+
+
+
+
 ---
+
 
 [Template Functions and Pipelines](https://helm.sh/docs/chart_template_guide/functions_and_pipelines/)
 
