@@ -670,6 +670,8 @@ Run the helm install command and check the service
 
 Getting output as expected.
 
+**Read Values from child chart**
+
 ---
 
 
