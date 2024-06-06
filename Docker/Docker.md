@@ -145,25 +145,27 @@ find / -name "index.html"
 ```
 
 To run commands in running containers
-> docker exec <options> <container_name or container_id> <command>
-
->  where <command> will the command to be executed inside the container.
-
->        <options> will the additional options we may want to include.
+> `docker exec <options> <container_name > <command>`
 
 ```bash
-docker exec -t mysql touch /tmp/demo
+docker exec -it mysql touch /tmp/demo
 docker exec -it mysql /bin/bash
 ```
+
 To execute and login to database in running container. 
 ```bash
 docker exec -it mysql mysql -uroot -p
 ```
 Enter password: 1234
+
 It will enter in mysql inside of container
+
 mysql> `show databases;`
+
 This will show databases inside of mysql container.
+
 mysql> `create database mydb1;`
+
 This will create database mydb1 inside of mysql container.
 
 
