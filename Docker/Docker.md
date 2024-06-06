@@ -94,6 +94,34 @@ To remove all unused containers
 docker container rm 33p4 881c 22a8
 ```
 
+To pass user supplied values to container
+```bash
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=1234 -d mysql
+```
+
+> [!NOTE]
+> Whenever we need to pass user supplied values to container, we need to supply those values as environment variable using `-e` or `--env` flag
+
+To view docker container resource consumption. 
+> docker stats <container_name>
+
+>docker stats <container_id>
+```bash
+docker stats 6e84
+```
+![image](https://github.com/tejasp77/DevOps/assets/165159032/9fe461d4-fd35-432d-99c9-741c00722e35)
+It shows stats regarding consumption of cpu, ram, pids, traffic resources on which container running on host machine.
+![image](https://github.com/tejasp77/DevOps/assets/165159032/a9adeaaf-580d-4af7-ae54-4ad7aec80f45)
+For pid, we can run docker top <container_id> command to check how many process are running inside the container.
+
+To get detailed information about container.
+> docker inspect <container_name>
+
+>docker inspect <container_id>
+```bash
+docker inspect 6e84
+```
+
 
 
 
