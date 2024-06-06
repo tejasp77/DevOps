@@ -45,6 +45,7 @@ docker container ls -a
 
 To stop docker container
 > docker container stop <container_id>
+
 > docker container stop <container_name>
 ```bash
 docker container stop 89c5
@@ -52,6 +53,7 @@ docker container stop 89c5
 
 To start existing container
 > docker container start <container_id>
+
 > docker container start <container_name>
 ```bash
 docker container start 23d9
@@ -67,6 +69,7 @@ docker container run --publish 8080:80 --detach --name mynginx nginx
 
 To see logs of a specific container
 > docker container logs <container_id>
+
 > docker container logs <container_name>
 ```bash
 docker container logs 87c34
@@ -85,6 +88,7 @@ ps -ef | grep nginx
 
 To remove all unused containers
 > docker container rm <space_seperated_container_id>
+
 > docker container rm <space_seperated_container_name>
 ```bash
 docker container rm 33p4 881c 22a8
