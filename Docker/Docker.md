@@ -114,14 +114,57 @@ It shows stats regarding consumption of cpu, ram, pids, traffic resources on whi
 ![image](https://github.com/tejasp77/DevOps/assets/165159032/a9adeaaf-580d-4af7-ae54-4ad7aec80f45)
 For pid, we can run docker top <container_id> command to check how many process are running inside the container.
 
-To get detailed information about container.
+To get detailed information about container regarding env variables, start time, etc.
 > docker inspect <container_name>
 
 >docker inspect <container_id>
 ```bash
 docker inspect 6e84
 ```
+> [!NOTE]
+> `docker inspect` command will only work for running containers. It will not work for stopped or exited container.
 
+> [!IMPORTANT]
+> Monitoring commands for docker environment: docker container logs, docker container top, docker stats, docker inspect
+
+To start container in interactive mode
+> docker container run -it <image_id> <command>
+
+> docker container run -it <image_name> <command>
+
+```bash
+docker container run -p 8080:80 -it --name mynginx nginx /bin/bash
+```
+-it means
+- -i: Keep STDIN open even if not attached.
+-  -t: Allocate a pseudo-TTY (terminal).
+
+To find a specific file 
+```bash
+find / -name "index.html"
+```
+
+To run commands in running containers
+> docker exec <options> <container_name or container_id> <command>
+
+>  where <command> will the command to be executed inside the container.
+
+>        <options> will the additional options we may want to include.
+
+```bash
+docker exec -t mysql touch /tmp/demo
+docker exec -it mysql /bin/bash
+```
+To execute and login to database in running container. 
+```bash
+docker exec -it mysql mysql -uroot -p
+```
+Enter password: 1234
+It will enter in mysql inside of container
+mysql> `show databases;`
+This will show databases inside of mysql container.
+mysql> `create database mydb1;`
+This will create database mydb1 inside of mysql container.
 
 
 
