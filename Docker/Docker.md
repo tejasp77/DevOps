@@ -171,6 +171,10 @@ This will show databases inside of mysql container.
 
 mysql> `create database mydb1;`
 
+---
+
+docker container run -d --name my-mariadb-container -e MARIADB_ROOT_PASSWORD=admin123 MARIADB_USER=test1  MARIADB_PASSWORD=test123 MARIADB_DATABASE=mydb mariadb
+
 This will create database mydb1 inside of mysql container.
 
 ---
