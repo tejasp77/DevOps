@@ -670,7 +670,120 @@ Run the helm install command and check the service
 
 Getting output as expected.
 
+---
+
 **Read Values from child chart**
+
+---
+Install Kyverno
+
+```bash
+helm repo add kyverno https://kyverno.github.io/kyverno/
+```
+
+```bash
+helm repo update
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/45ca9627-ecec-4b27-ac93-fd8b63c6ecc4)
+
+```bash
+helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/c8425c00-5248-4d14-befa-e56a8bbc2553)
+
+
+```bash
+kubectl get pods -n kyverno
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/7c8708b1-0a21-4660-848d-3c0c70aae6e1)
+
+create policy yaml
+
+```yaml
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-run-as-non-root
+spec:
+  background: true
+  validationFailureAction: Enforce
+  rules:
+  - name: check-containers
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    validate:
+      message: >-
+        Running as root is not allowed. The fields spec.securityContext.runAsNonRoot,
+        spec.containers[*].securityContext.runAsNonRoot, and
+        spec.initContainers[*].securityContext.runAsNonRoot must be `true`.        
+      anyPattern:
+      # spec.securityContext.runAsNonRoot must be set to true. If containers and/or initContainers exist which declare a securityContext field, those must have runAsNonRoot also set to true.
+      - spec:
+          securityContext:
+            runAsNonRoot: true
+          containers:
+          - =(securityContext):
+              =(runAsNonRoot): true
+          =(initContainers):
+          - =(securityContext):
+              =(runAsNonRoot): true
+      # All containers and initContainers must define (not optional) runAsNonRoot=true.
+      - spec:
+          containers:
+          - securityContext:
+              runAsNonRoot: true
+          =(initContainers):
+          - securityContext:
+              runAsNonRoot: true
+
+```
+
+```bash
+kubectl apply -f non-root-priv.yaml
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/5e130d2d-9831-42b5-b1fd-1d5946b63115)
+
+
+```bash
+kubectl get kyverno
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/36c54974-b6d2-4688-ada4-7f35ea031666)
+
+```bash
+helm install custom-deployment my-first-chart/
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/2e980392-e6b5-43f5-a14d-dd81eb91d4ff)
+
+```bash
+helm list
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/253e1829-ed67-43e6-91ef-b0f4de72d88e)
+
+Add in deployment.yml
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/a64b8823-42b8-4d19-b028-c409b5090b05)
+
+Added in values.yml 
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/0bde0dd8-28ba-4291-badb-86768c3bb12d)
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/140f1167-ec0c-4f26-957c-4a59d0485649)
+
+```bash
+ helm upgrade custom-deployment my-first-chart/
+```
+
+![image](https://github.com/tejasp77/DevOps/assets/165159032/8024e314-9c27-4b94-af84-7db866768b42)
 
 ---
 
