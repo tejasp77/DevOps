@@ -1,6 +1,6 @@
 To verify version of docker install on machine
 ```bash
-docker version`
+docker version
 ```
 ---
 To verify docker engine and details
