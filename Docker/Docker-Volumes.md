@@ -17,7 +17,7 @@ Docker has two options for containers to store files in the host machine, so tha
 
 Run MySQL
 ```bash
-docker container run -d - -name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True mysql
+docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True mysql
 ```
 
 List volumes 
@@ -34,10 +34,10 @@ docker volume inspect
 
 Run MySQL with named Volume
 ```bash
-docker container run -d - -name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True - -mount source=mysql-db, target=/var/lib/mysql mysql
+docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True --mount source=mysql-db, target=/var/lib/mysql mysql
 ```
 ```bash
-docker container run -d - -name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/ mysql mysql
+docker container run -d --name mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=True -v mysql-db:/var/lib/ mysql mysql
 ```
 
 Create Volumes 
