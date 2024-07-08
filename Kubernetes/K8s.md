@@ -41,3 +41,25 @@ kubectl delete service <service_name>
 ```bash
 kubectl delete deployment <deployment_name>
 ```
+
+### Get namespaces
+```bash
+kubectl get namespaces
+```
+
+### Get pods running in specific namespace
+```bash
+kubectl get pods -n <namespace_name>
+```
+> [!NOTE]
+> If namespace is not defined, system will take default namespace.
+
+### Create namespace
+```bash
+kubectl create namespace <namespace_name>
+```
+
+### Get resources from all namespaces
+```bash
+kubectl get pods --all-namespaces
+```
