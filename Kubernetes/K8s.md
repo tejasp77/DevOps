@@ -12,6 +12,15 @@ kubectl create deployment <deployment_name> --image=<username>/<reponame>:<tag>
 kubectl get deployment
 ```
 
+### Create pod 
+```bash
+kubectl run <pod-name> --image=<image-name> -n <namespace-name>
+```
+For example run nginx pod from nginx image
+```bash
+kubectl run nginx --image=nginx -n development
+```
+
 ### Get pod
 ```bash
 kubectl get pods
