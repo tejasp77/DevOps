@@ -68,6 +68,9 @@ kubectl create -f <pod.yaml>
 ```bash
 kubectl apply -f <pod.yaml>
 ```
+> [!NOTE]
+> Create command create new k8s resource object and if resource exist in k8s the create command fails.
+> Apply command create and update new or existing objects in k8s.
 
 ### Delete resources
 ```bash
