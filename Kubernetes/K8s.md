@@ -138,3 +138,63 @@ For example, to get the content of nginx configuratiom from running container in
 ```bash
 kubectl exec <nginx-pod-name> -c nginx -- cat /etc/nginx/nginx.conf
 ```
+
+### Get service acounts
+```bash
+kubectl get serviceaccounts
+```
+
+### Get roles
+```bash
+kubectl get roles
+```
+
+### Get role binding
+```bash
+kubectl get rolebinding
+```
+
+### Create configmap
+```bash
+kubectl create configmap <configmap-name> --from-file </path/to/file.properties> --from-file </path/to/file2.properties>
+```
+```bash
+kubectl create configmap <name> --from-file </path/to/directory>
+```
+
+### Get configmap
+```bash
+kubectl get configmap <configmap-name> -o yaml/json
+```
+
+### Describe configmap
+```bash
+kubectl describe configmap <configmap-name>
+```
+
+### Create Secrets
+```bash
+kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+```
+>[!NOTE]
+> Special characters such as `$`, `\`, `*` and `!` require escaping.
+
+### Get Secrets
+```bash
+kubectl get secrets
+```
+
+### Describe secrets
+```bash
+kubectl describe secrets <secret-name>
+```
+>[!NOTE]
+> User can pass secrets and config map to container using environment variables.
+
+> Config mount volumes is another way to pass config data and secrets to containers. Using this config data will be available in files to container file system.
+
+### Convert to base64 
+```bash
+echo -n 'admin' | base64
+```
+
