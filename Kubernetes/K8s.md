@@ -190,7 +190,7 @@ kubectl describe secrets <secret-name>
 ```
 >[!NOTE]
 > User can pass secrets and config map to container using environment variables.
-
+>
 > Config mount volumes is another way to pass config data and secrets to containers. Using this config data will be available in files to container file system.
 
 ### Convert to base64 
