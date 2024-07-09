@@ -5,3 +5,6 @@ sudo apt install fish
 ```bash
 fish
 ```
+```bash
+kubectl api-resources | wc -l
+```
