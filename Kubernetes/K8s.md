@@ -159,7 +159,7 @@ kubectl get rolebinding
 kubectl create configmap <configmap-name> --from-file </path/to/file.properties> --from-file </path/to/file2.properties>
 ```
 ```bash
-kubectl create configmap <name> --from-file </path/to/directory>
+kubectl create configmap <configmap-name> --from-file </path/to/directory>
 ```
 
 ### Get configmap
@@ -174,7 +174,13 @@ kubectl describe configmap <configmap-name>
 
 ### Create Secrets
 ```bash
+kubectl create secret generic <secret-name> --from-file=<file1.txt> --from-file=<file2.txt>
+```
+```bash
 kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+```
+```bash
+kubectl create secret generic nginx-htpasswd --from-file .htpasswd
 ```
 >[!NOTE]
 > Special characters such as `$`, `\`, `*` and `!` require escaping.
