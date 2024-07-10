@@ -8,6 +8,9 @@ fish
 ```bash
 kubectl api-resources | wc -l
 ```
-bash```
+```bash
 curl -u <username>:<password> <ip-address>
+```
+```bash
+top
 ```
