@@ -237,3 +237,28 @@ kubectl get daemonsets
 kubectl describe daemonsets
 ```
 
+### Get Replication controller
+```bash
+kubectl get replicationcontroller/<replicationcontroller-name>
+```
+
+### Scale Replication controller
+```bash
+kubectl scale --replicas=<number> replicationcontroller/<replicationcontroller-name>
+```
+
+### Get replicaset
+```bash
+kubectl get replicaset.apps/<replicaset-name>
+```
+```bash
+kubectl get rs/<replicaset-name>
+```
+
+### Describe replicaset
+```bash
+kubectl describe rs/<replicaset-name>
+```
+
+
+
