@@ -204,3 +204,36 @@ kubectl describe secrets <secret-name>
 echo -n 'admin' | base64
 ```
 
+### Get Nodes
+```bash
+kubectl get nodes
+```
+
+### Get Nodes with labels
+```bash
+kubectl get nodes --show-labels
+```
+
+### Assign label to particular worker node
+```bash
+kubectl label nodes <node-name> <key-name=value-name>
+```
+For example, 
+```bash
+kubectl label nodes k8s-worker02 disktype=ssd
+```
+
+### Check pod running on node
+```bash
+kubectl get pods -o wide
+```
+
+### Get Daemonsets
+```bash
+kubectl get daemonsets
+```
+### Describe Daemonsets
+```bash
+kubectl describe daemonsets
+```
+
