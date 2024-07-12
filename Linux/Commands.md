@@ -14,3 +14,6 @@ curl -u <username>:<password> <ip-address>
 ```bash
 top
 ```
+```bash
+sudo systemctl restart <service-name>
+```
