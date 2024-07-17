@@ -17,3 +17,8 @@ top
 ```bash
 sudo systemctl restart <service-name>
 ```
+If inside pod with -it sh and to install curl
+```bash
+apk update
+apk add curl
+```
