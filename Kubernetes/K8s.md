@@ -260,5 +260,97 @@ kubectl get rs/<replicaset-name>
 kubectl describe rs/<replicaset-name>
 ```
 
+### Scale Replicas
+```bash
+kubectl scale --replicas=<number> rs/<replicaset-name>
+```
+
+### Get deployment
+```bash
+kubectl get deployment.apps/<deployment-name>
+```
+
+### Roll out deployment
+```bash
+kubectl rollout status deployment.apps/<deployment-name>
+```
+
+### Describe deployment
+```bash
+kubectl describe deployment.apps/<deployement-name>
+```
+
+### Get all replicasets
+```bash
+kubectl get rs
+```
+
+### Get pods with show labels
+```bash
+kubectl get pods --show-labels
+```
+
+> [!NOTE]
+> Deployment creates or executes replicasets. Replicasets creates or manages pods and pods create containers as part of deployment structure.
+
+### Set image in deployment using command
+```bash
+kubectl set image deployment/<deployment-name> <pod-name>=<registry-user-id>/<image-name>:<version>
+```
+
+### Get roll out status for deployment
+```bash
+kubectl rollout deployment.apps/<deployment-name>
+```
+> [!NOTE]
+> rollout status command allows to monitor new image within your deployment. It will create new container with new changes and then make old container down and vice versa, this will ensure there will zero downtime for application.
+
+### Get history of deployment
+```bash
+kubectl rollout history deployment.apps/<deployment-name>
+```
+
+### Set image in deployment using command and keeps record of deployment
+```bash
+kubectl set image deployment/<deployment-name> <pod-name>=<registry-user-id>/<image-name>:<version> --record
+```
+
+### Rollback or undo deployment to previous version
+```bash
+kubectl rollout undo deployment.apps/<deployment-name>
+```
+
+### Rollback or undo deployment to specific version
+```bash
+kubectl rollout undo deployment.apps/<deployment-name> --to-version=<revision-number>
+```
+
+### Edit deployment
+```bash
+kubectl edit deployment <deploymennt-name>
+```
+
+### Pause deployment
+```bash
+kubectl rollout pause deployment.apps/<deployment-name>
+```
+
+### Set memory resource using command
+```bash
+kubectl set resources deployment/<deployment-name> -c=<container-name> --limits=memory=250Mi
+```
+
+### Resume deployment
+```bash
+kubectl rollout resume deployment.apps/<deployment-name>
+```
+
+### Scale replicas in deployment
+```bash
+kubectl scale deployment.apps/<deployment-name> --replicas=<number>
+```
+
+
+
 
 
