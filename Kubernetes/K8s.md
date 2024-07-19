@@ -35,15 +35,27 @@ kubectl expose deployment <deployment_name> --type=LoadBalancer --port=8080
 ```bash
 kubectl get services
 ```
+```bash
+kubectl get services -o wide
+```
 
 ### Describe service
 ```bash
 kubectl describe service/<service-name>
 ```
 
+> [!NOTE]
+> Service domain name are of the form `service-name.namespace-name.svc.cluster-domain.example`
+> Default cluster domain is `cluster.local`
+> Pods within the same namespace can use the service name only `service-name`
+> Pods within the different namespace can use the fully qualified domain name `service-name.namespace-name.svc.cluster.local`
+
 ### To access application using minikube to expose the application outside k8s cluster
 ```bash
 minikube service <service_name>
+```
+```bash
+minikube service <service_name> --url 
 ```
 
 ### Delete service
@@ -54,6 +66,11 @@ kubectl delete service <service_name>
 ### Delete deployment
 ```bash
 kubectl delete deployment <deployment_name>
+```
+
+### Create namespace
+```bash
+kubectl create namespace <namespace_name>
 ```
 
 ### Get namespaces
@@ -82,11 +99,6 @@ kubectl get pods -n <namespace_name>
 ### Get pods with labels
 ```bash
 kubectl get pods -o wide --show-labels
-```
-
-### Create namespace
-```bash
-kubectl create namespace <namespace_name>
 ```
 
 ### Create resources
@@ -304,6 +316,9 @@ kubectl rollout status deployment.apps/<deployment-name>
 ```bash
 kubectl describe deployment.apps/<deployement-name>
 ```
+```bash
+kubectl describe deployment <deployement-name>
+```
 
 ### Get all replicasets
 ```bash
@@ -382,6 +397,29 @@ kubectl get networkpolicy -o wide
 
 > [!NOTE]
 > Pod domain names are of the form `pod-ip-address.namespace-name.pod.cluster.local`.
+
+### Describe ingress
+```bash
+kubectl describe ingress <ingress-name>
+```
+
+> [!NOTE]
+> Ingress talks to the service. Service talks to the deployment.
+
+### To access ingress on minikube
+```bash
+minikube ip
+```
+```bash
+curl <ip-address-minikube> -H 'Host: <ingress-dns-host-name>'
+```
+for example,
+```bash
+curl 192.136.43.21 -H 'Host: nginx-official.example.com'
+```
+
+> [!NOTE]
+> Accessing the service by a ingress controller. That service is basically sending the request to the ingress. Ingress is identifying which host the user is trying to access, and that will send that particular request to host. Host will resolve itself on the service and the service node service will send the request to the deployment, deployment send the request to the port or it will send the request to the container. And container will fulfill the request because actual application is running inside the container. So this is the ingress inside the Kubernetes cluster.
 
 
 
