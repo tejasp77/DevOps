@@ -36,6 +36,11 @@ kubectl expose deployment <deployment_name> --type=LoadBalancer --port=8080
 kubectl get services
 ```
 
+### Describe service
+```bash
+kubectl describe service/<service-name>
+```
+
 ### To access application using minikube to expose the application outside k8s cluster
 ```bash
 minikube service <service_name>
@@ -56,12 +61,28 @@ kubectl delete deployment <deployment_name>
 kubectl get namespaces
 ```
 
+### Get namespace with labels
+```bash
+kubectl get namespace --show-labels
+```
+
+### Provide label to specific namespace
+```bash
+kubectl label namespace <namespace-name> <key>=<value>
+```
+
 ### Get pods running in specific namespace
 ```bash
 kubectl get pods -n <namespace_name>
 ```
 > [!NOTE]
 > If namespace is not defined, system will take default namespace.
+
+
+### Get pods with labels
+```bash
+kubectl get pods -o wide --show-labels
+```
 
 ### Create namespace
 ```bash
@@ -137,6 +158,10 @@ kubectl exec <pod-name> -c <container-name> -- <command-type> <file>
 For example, to get the content of nginx configuratiom from running container in nginx pod
 ```bash
 kubectl exec <nginx-pod-name> -c nginx -- cat /etc/nginx/nginx.conf
+```
+For example, to curl the the nginx another pod using ip address
+```bash
+kubectl exec <busybox-pod-name> -- curl 192.168.36.195
 ```
 
 ### Get service acounts
@@ -349,6 +374,15 @@ kubectl rollout resume deployment.apps/<deployment-name>
 ```bash
 kubectl scale deployment.apps/<deployment-name> --replicas=<number>
 ```
+
+### Get network policy
+```bash
+kubectl get networkpolicy -o wide
+```
+
+> [!NOTE]
+> Pod domain names are of the form `pod-ip-address.namespace-name.pod.cluster.local`.
+
 
 
 
