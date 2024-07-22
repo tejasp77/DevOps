@@ -251,6 +251,11 @@ kubectl get nodes
 kubectl get nodes --show-labels
 ```
 
+### Describe nodes
+```bash
+kubectl describe node <node-name>
+```
+
 ### Assign label to particular worker node
 ```bash
 kubectl label nodes <node-name> <key-name=value-name>
