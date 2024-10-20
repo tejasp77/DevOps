@@ -31,6 +31,13 @@ Additionally, we can make use of the -JSON flag to print the contents in a JSON 
 terraform show -json
 ```
 
+### terraform state show
+This command prints out the current state of the infrastuucture resource as seen by terraform.
+Syntax: terraform state show `<provider>_<type>.<resource>`
+```bash
+terraform state show local_file.file
+```
+
 ### terraform output
 If you want to print all output variables in the configuration directory, use the command terraform output.
 ```bash
@@ -98,3 +105,26 @@ Once installed, we can pass the output of the terraform graph to the DOT command
 terraform graph | dot -Tsvg > graph.svg
 ```
 We can now open this file via a browser and it should show a dependency graph.
+
+
+### terraform state
+
+```bash
+terraform state list
+```
+
+```bash
+terraform state show <provider_resourcetype>.<resourcename>
+```
+
+```bash
+terraform state mv source destination
+```
+```bash
+terraform state mv <provider_resourcetype>.<resourcename1> <provider_resourcetype>.<resourcename2>
+```
+```bash
+terraform state rm <provider_resourcetype>.<resourcename1>
+```
+
+Note: this will remove object from terraform management, it will apply infrastructure. terraform configuration files needs to be updated.
