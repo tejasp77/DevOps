@@ -50,10 +50,13 @@ Resource group-level policies typically take **precedence** over subscription-le
 
 The **cloud tiering feature** is used to ensure volumes have a percentage of free space when you use the Azure File Sync service.
 
-Support Request Contributor
-Read roles and role assignments -- Microsoft.Authorization/*/read
-Create and update a support ticket -- Microsoft.Support/*
-Gets or lists resource groups. -- Microsoft.Resources/subscriptions/resourceGroups/read
+**Support Request Contributor**
+
+Read roles and role assignments -- **Microsoft.Authorization/*/read**
+
+Create and update a support ticket -- **Microsoft.Support/***
+
+Gets or lists resource groups. -- **Microsoft.Resources/subscriptions/resourceGroups/read**
 
 To backup any resource in Azure, the first thing you need to do is to create a **Recovery Services vault**
 
@@ -95,4 +98,133 @@ By enabling diagnostics on the Load Balancer, you can analyze the network flow l
 
 **IP Flow Verify** is used to verify the flow of traffic.
 
-**Connection monitor** also provides the minimum, average, and maximum latency observed over time. After learning the latency for a connection, you may find that you’re able to decrease the latency by moving your Azure resources to different Azure regions. 
+**Connection monitor** also provides the minimum, average, and maximum latency observed over time. After learning the latency for a connection, you may find that you’re able to decrease the latency by moving your Azure resources to different Azure regions.
+
+**Storage Account Contributer** permits management of Storage accounts.
+
+**Storage Blob Data Owner** provides full access - read, write, and delete permissions to Azure Storage blob containers and data, including assigning POSIX access control. 
+
+**Storage Blob Data Contributor** - Read, write, and delete Azure Storage containers and blobs.
+
+Only the **BLOB storage** service is supported with the Export job feature. 
+
+For import job feature **Azure Blob storage** and **Azure File storage** is supported.
+
+In order to ensure that traffic is routed via the intrusion-based device, you need to setup a **route table** and add the route table to the subnets in the other virtual networks.
+
+**Azure policies** are used from a governance perspective.
+
+Use **resource tags** to organize your Azure resources and also apply billing techniques department wise.
+
+**Azure role-based access control** is used to control access to resources.
+
+Create alerts based on **Activity Logs in Azure Monitor**.
+
+**Azure Advisor** service is used as a recommendations engine.
+
+**Service Health service** is used to inform users on the health of all Azure based services.
+
+**Azure Locks**
+
+Resource Lock Analysis
+
+1. Resource Group “skillcertlabs-rg1”:
+   - Contains three resources:
+     - skillcertlabstore2090: Has a Delete lock (skillcertlablock2).
+     - skillcertlabnetwork: Has a Read-only lock (skillcertlablock3).
+     - skillcertlabip: No lock.
+2. Resource Group “skillcertlabs-rg2”:
+   - Has a Delete lock (skillcertlabock1).
+
+Moving Resources in Azure
+
+In Azure, when moving resources between resource groups, the following rules apply regarding locks:
+
+- If the destination resource group has a Delete lock, it prevents any resources from being deleted from that group. However, it does not prevent moving resources into it.
+- If the source resource group has a Read-only lock on any of its resources, that might restrict modifications, including moving resources out of the group.
+- The presence of a Read-only lock on “skillcertlabnetwork” means that modifications to this resource are restricted, which could prevent moving it to another resource group.
+
+Given the above analysis, you **cannot** move the resource “skillcertlabnetwork” from “skillcertlabs-rg1” to “skillcertlabs-rg2” because:
+- The resource “skillcertlabnetwork” has a Read-only lock applied to it, which restricts modifications to the resource.
+- Moving a resource to another resource group is considered a modification operation, and the Read-only lock on “skillcertlabnetwork” prevents this action.
+
+If user has the **Global Administrator** role and has created the new directory, the user would have the required permissions to create new users in the directory.
+
+Solution:
+
+There are two possible solutions:
+
+1. **Skillcertlabusr1 grants access**: Skillcertlabusr1, who created the new tenant, has the necessary permissions. They can grant Global Administrator or User Administrator roles to skillcertlabusr2 **within the new tenant**.
+2. **Use Azure AD B2C**: If the company wants external users in the new tenant, consider using Azure AD B2C, which allows self-service signup or social logins.
+
+While skillcertlabusr2 has Global Administrator privileges in the original tenant (skillcertlabs.onmicrosoft.com), those privileges **don’t extend** to the newly created tenant (staging.skillcertlabs.onmicrosoft.com).
+
+If the user is **User Administrator** then he would have permission for current directory (skillcertlabs.onmicrosoft.com) only. In order to add users to the new directory, the main user needs to be given the required Global Admin role in the new directory.
+
+Network interface needs to be created in the **same region** as the virtual network. When you create a virtual network, an important aspect is to ensure you set the virtual network for the network interface.
+
+Backup policy types available in Azure Backup
+- Azure VM
+- Azure File Share
+- SQL Server in Azure VM
+- SAP HANA in Azure VM
+
+So, we can have on policy for the **Azure virtual machines** and one for **Azure file shares**. The Azure SQL Databases have a separate backup mechanism via **automated backups**.
+
+Once you add a server as a server endpoint with a particular file path, you **can’t add** the server as another endpoint with another path.
+
+Azure subscription that contains a Log Analytics workspace named stagingworkspace. You have to get the error events from the table named Event.
+
+**search in (Event) “error”**
+
+If the user state is in the **Enforced state**, then the user will **need to use MFA for the login process**.
+
+**Floating IP** is used when you have multiple front-end IP’s.
+
+**Health Probe**  is used to check the health of the back end VM’s.
+
+**TCP Reset** is used for idle timeout.
+
+**Cost Analysis section for the subscription** allows you to see all the costs.
+
+A **data collector set** if used to collect data for Performance counters.
+
+**Network Watcher variable packet capture** allows you to create packet capture sessions to track traffic to and from a virtual machine. Packet capture helps to diagnose network anomalies both reactively and proactivity. Other uses include gathering network statistics, gaining information on network intrusions, to debug client-server communications and much more.
+
+**Azure AD roles** are specifically meant to control access to Azure AD.
+
+Move Azure resources across subscriptions using the **Move-AzResource** powershell command. 
+
+For achieving high availability, you need to use **Availability sets**.
+**Availability set** for multiple VMs
+- Provide a Service Level Agreement (SLA) of 99.95 percent availability.
+- Use managed disks.
+
+**Azure Traffic manager** is used for traffic distribution based on DNS queries.
+
+**Owner** has permission to assign read role to user.
+**Network Contributor** does not have access to assign read roles. And if you look at the **Security admin role** , it only has the privilege to work with Security Center.
+
+The local VPN gateway is used when you want to define **site-to-site VPN connections**.
+
+Users can connect to file share from their home computers using **port 445**.
+
+**Role based access policies** can be used to restrict access to resources, but they can put any sort of governance on what type of resources to create.
+
+Want to ensure that only Virtual Machines of a particular SKU size can be launched in their Azure account. This can be done with **Azure policies**.
+
+Which of the following network watcher feature would you use for the following requirement?
+“Find out if a network security rule is preventing a network packet from reaching a virtual machine hosted in an Azure virtual network”
+This can be done with the **IP Flow Verify feature**. It checks if a packet is allowed or denied to or from VM.
+
+**Next Hop** is used to get the next hop type and IP address of a packet from a specific VM.
+
+**Packet Capture** is used for deep dive network packet capture.
+
+**Traffic Analysis** is a cloud-based solution that provides visibility into user and application activity in cloud networks.
+
+You can achieve 99.99% SLA on the infrastructure level for your virtual machines by **deploying them across availability zones**.
+
+**Availability sets** can only guarantee an SLA of 99.95%
+
+
