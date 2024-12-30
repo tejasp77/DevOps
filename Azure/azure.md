@@ -16,6 +16,7 @@ In order to ensure that secrets from Azure Key vault can be accessed you need to
 In order to ensure the client IP is requested by the same back end virtual machine, you need to **enable Session Persistence and set it to Client IP**.
 
 UNC path URL format for Azure file share
+
 ![image](https://github.com/user-attachments/assets/d8356651-60eb-4bdd-8c6b-53a0988e3333)
 
 **Azure locks** are used to prevent users from accidentally deleting or modifying critical resources.
@@ -228,6 +229,7 @@ You can achieve 99.99% SLA on the infrastructure level for your virtual machines
 **Availability sets** can only guarantee an SLA of 99.95%
 
 In load balancers, virtual machines need to be part of a **single virtual network**.
+
 ![image](https://github.com/user-attachments/assets/bb94a13b-4ef6-4f74-9349-0bc597da0c0b)
 
 When transferring data to an Azure storage account, you can transfer data to **Azure blob storage** or **Azure file storage**.
