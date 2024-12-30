@@ -238,7 +238,160 @@ For administrators, the password reset policy is different wherein **they are no
 
 Scale sets are used to **scale the Virtual machines based on load**. But here to achieve the desired level of availability, you also need to use an **Availability set**. You can use availability sets along with scale sets to achieve high availability.
 
+Here’s an important point to remember regarding Azure Policy:
 
+Azure policy assignment scope works in a **top-down manner**. A policy assigned to a higher level scope (like Tenant Root) will **override** policies assigned to lower levels (like specific resource groups).
+Therefore, despite the resource group existing, the Azure policy will block the creation of a virtual network within it.
 
+Using Azure Backup option, the virtual machine has to be in the **Stopped** or Deallocated state in order to replace the existing disks on the virtual machine.
 
+Azure policies would only highlight the compliance of existing resource and enforce the policy restrictions on **new resources**.
 
+Since there is only a delete lock on the target resource group, we can still change or **move** the resource to the target resource group.
+
+Both virtual machines are in the same virtual network, so they **can communicate** with each other directly.
+
+Both resource groups are within the same subscription (“skillcertlab-staging”), the Read-Only lock on “skillcertlabs-rg2” **restricts** adding new resources like the web application.
+
+since the lock type is a Delete lock, resources can still be **added** or **updated** in the resource group. Hence the Azure Web app can be moved to this resource group.
+Remember – You can move resources across subscriptions. Also remember that the resource group could be located in a different region from the resource itself.
+
+To protect the web servers against SQL injection attacks, one can make use of the **Web Application Firewall** feature.
+
+**Azure AD Join**: When a user joins a device to Azure AD, they are automatically added to the local Administrators group on that device. This gives them the necessary permissions to manage the device.
+**Global Administrator**: The Global Administrator role has the highest level of permissions in Azure AD and can manage all aspects of the tenant. This includes the ability to join devices to Azure AD and add users to the local Administrators group.
+**Cloud Device Administrator**: The Cloud Device Administrator role has permissions to manage devices in Azure AD, but they cannot directly add users to the local Administrators group on those devices.
+**Intune Administrator**: The Intune Administrator role has permissions to manage Intune policies and settings, but they cannot directly add users to the local Administrators group on devices.
+Therefore, when skillcertlabusr1 joins a Windows 10 computer to the Azure AD tenant, both skillcertlabusr1 (the user who joined the device) and skillcertlabusr2 (the Global Administrator) will be added to the local Administrators group on the computer.
+
+If you have a duplicate file on the file share and the file server, the file on the file server will have **its name appended with the name of the server**
+
+For administrators, the password reset policy is different wherein **they are not asked for security questions**.
+
+The **Fraud alert** feature lets users report fraudulent attempts to access their resources. When an unknown and suspicious MFA prompt is received, users can report the fraud attempt by using the Microsoft Authenticator app or through their phone.
+
+**Automatically block users who report fraud**. If a user reports fraud, the Microsoft Entra multifactor authentication attempts for the user account are blocked for 90 days or until an administrator unblocks the account. An administrator can review sign-ins by using the sign-in report, and take appropriate action to prevent future fraud. An administrator can then unblock the user's account.
+
+You can actually create alerts **in Azure Monitor based on the events recorded in the Log Analytics workspace**.
+You actually have to record the events in a Log Analytics workspace. And then configure alerts in Azure monitor based on the Azure Log Analytics workspace.
+
+skillcertlabapp1 – Be able to see if users are progressing through the entire business process for the application.
+In App Insights **Funnels** - Discover how customers use your application.
+**Funnels** - Understand how users progress through a series of steps in your application and where they might be dropping off.
+
+skillcertlabapp2 – Here one should be able to analyse the load times and other properties that could influence conversion rates for the application
+**Impact Analysis** - Analyze how application performance metrics, like load times, influence user experience and behavior, to help you to prioritize improvements.
+
+skillcertlabapp3 – Here one should be able to analyse how many users return to the application.
+The Application Insights **retention** feature provides valuable insights into user engagement by tracking the frequency and patterns of users returning to your app and their interactions with specific features.
+
+skillcertlabapp4 – Here one should be able to see the places where users repeat the same action over and over again.
+The **User Flows** tool visualizes how users move between the pages and features of your site. It's great for answering questions like:
+- How do users move away from a page on your site?
+- What do users select on a page on your site?
+- Where are the places that users churn most from your site?
+- **Are there places where users repeat the same action over and over?**
+
+Here you have to ensure that the **client certificate is installed on every client computer** that needs to establish a Point-to-Site VPN connection to the Azure virtual network.
+
+The backup and restore option is available with the **Standard App Service Plan**.
+
+You can assign Azure Policy to a **management group**, **subscription** or **resource group**.
+
+self-service password reset (SSPR)
+Email addresses – only used for SSPR
+Security questions – only used for SSPR
+App passwords – Can be used as primary authentication method for legacy apps, but cannot be used for both MFA & SSPR
+
+**SMS-based** and **The Authenticator app** - MFA and SSPR
+
+AzCopy is a command-line utility that you can use to copy **blobs** or **files** to or from a storage account.
+
+**Azure file shares** can be used as **persistent volumes** for stateful containers.
+**Azure Blob storage** –  Blob storage is optimized for storing massive amounts of unstructured data.
+**Azure Queue storage** – Queue storage is for storing messages in distributed applications.
+**Azure Table storage** – Table storage is for storing semi-structured data.
+
+Availabilty Set
+An update domain is a **group of VMs** and underlying physical hardware that can be rebooted at the same time.
+VMs in the same fault domain share common storage as well as a common power source and network switch.
+Microsoft updates, which Microsoft refers to as planned maintenance events, sometimes require that VMs be rebooted to complete the update. To reduce the impact on VMs, the **Azure fabric** is divided into update domains to ensure that not all VMs are rebooted at the same time.
+
+To create a vault to protect any data source, the vault must be in the **same region** as the data source. Storage account must be in the **same region** as your Recovery Service Vault.
+
+The location and subscription where this Log Analytics workspace can be created is **independent** of the location and subscription where your vaults exist.
+
+The azcopy copy command copies a directory (and all of the files in that directory) to a blob container. The result is a directory in the container by the same name.
+Syntax is : **azcopy copy ” ‘https://..core.windows.net/’ –recursive**
+Append the –recursive flag to upload files in all subdirectories.
+
+When you create a virtual machine (VM). You need to provide the VM administrator username and password. Instead of providing the password, you can pre-store the password in an **Azure key vault** and then customize the template to retrieve the password from the **key vault** during the deployment.
+
+**Azure AD Identity protection** is to detect and investigate identity based risks.
+
+**Automation account** is to automate azure management tasks.
+
+When you define a virtual machine scale set with an Azure template, the Microsoft.Compute/virtualMachineScaleSets resource provider can include a section on **extensions**. The **extensionsProfile** details what is applied to the VM instances in a scale set. To use the Custom Script Extension, you specify a publisher of Microsoft.Azure.**Extensions** and a type of **CustomScript**.
+The Custom Script Extension downloads and executes scripts on Azure VMs.
+
+To add custom domain name to webapp
+First purchase a domain name, and make sure you have access to the DNS registry for your domain provider. Then you can map the custom domain to your Azure web app. To add a custom domain to your app, you need to verify your ownership of the domain by adding a verification ID as a TXT record with your domain provider.
+
+You must create an **app service plan** before deploying web apps. **One app service plan** can have multiple web apps. To reduce the costs, create **one app service** and use it for 10 web apps.
+
+After you create a virtual machine (VM), you can scale the VM up or down by changing the VM size. In some cases, you must deallocate the VM first. This can happen if the new size is not available on the hardware cluster that is currently hosting the VM. If the virtual machine is currently running, changing its size will cause it to be **restarted**.
+
+Resource lock is used to **avoid accidental deletion of Azure resources**.
+
+You can create a **custom azure policy** to block port 8080. Azure policy enables you to establish conventions for resources in your subscription by describing when the policy is enforced and what effect to take.
+
+You need to view the average round-trip time (RTT) of the packets from VM1 to VM2.
+Azure Network Watcher feature - **Connection Monitor** provides you RTT values on a per-minute granularity. The connection monitor capability monitors communication at a regular interval and informs you of reachability, latency, and network topology changes between the VM and the endpoint.
+
+**IP flow verify** — IP flow verify checks if a packet is allowed or denied to or from a virtual machine.
+Connection troubleshoot — Enable you to troubleshoot network performance and connectivity issues in Azure
+**NSG flow logs** — allows you to log information about IP traffic flowing through an NSG.
+
+A Site-to-Site **VPN gateway** connection can be used to connect your on-premises network to an Azure virtual network over an IPsec/IKE (IKEv1 or IKEv2) VPN tunnel.
+This type of connection requires a VPN device, a **VPN gateway**, located on-premises that has an externally facing public IP address assigned to it.
+
+**Azure Application Gateway** is a web traffic load balancer. It does not provide connectivity to on-premise resources.
+
+**Azure Active Directory’s Application Proxy** provides secure remote access to on-premises web applications. It does not provide connectivity to on-premise file shares.
+
+There are five VMs. So, **five** NICs
+The rules are same for all VMs, so **one** NSG.
+
+Clients using Windows can access directly peered VNets, but the **VPN client must be downloaded** again if any changes are made to VNet peering or the network topology. Non-Windows clients can access directly peered VNets.
+
+**Gateway Transit** is a VNet Peering property that enables one virtual network to use the VPN gateway in the peered virtual network for cross-premises connectivity.
+
+**BGP** is for dynamic routing.
+
+You can’t add address ranges to, or delete address ranges from a virtual network’s address space once a virtual network is peered with another virtual network.
+To add or remove address ranges, **delete the peering, add or remove the address ranges, then re-create the peering**.
+
+Port forwarding lets you connect to virtual machines (VMs) in an Azure virtual network by using an Azure Load Balancer public IP address and port number. To set up port forwarding on an Azure Load Balancer, you must create **inbound NAT port-forwarding rules**.
+
+**Frontend IP configuration** allows you to configure a public IP address for the load balancer.
+
+**A load balancer rule** is used to define how incoming traffic is distributed to the all the instances within the backend pool.
+
+You have an on-premises network that you plan to connect to Azure by using a site-so-site VPN.
+In Azure, you have an Azure virtual network named VNet1 that uses an address space of 10.0.0.0/16 VNet1 contains a subnet named Subnet1 that uses an address space of 10.0.0.0/24.
+You need to create a site-to-site VPN to Azure.
+Which four actions should you perform in sequence?
+**Create a gateway subnet Create a VPN gateway Create a local gateway Create a VPN Connection**
+Virtual network already exists. So, we need to continue the steps from creating a gateway subnet.
+
+In Web app, **Web server logging** – Raw **HTTP request** data in the W3C extended log file format. Each log message includes data such as the HTTP method, resource URI, client IP, client port, user agent, response code, and so on.
+**Application logging** is for Logs messages generated by your application code.
+
+In Azure Monitor
+**Workbooks** are for creating visual reports.
+**Service health alerts** are to get up to date information and alerts on Azure issues like service outages and planned maintenances.
+
+**A Recovery Services vault** is a storage entity in Azure that houses data. The data is typically copies of data, or configuration information for virtual machines (VMs), workloads, servers, or workstations. You can use Recovery Services vaults to hold backup data for various Azure services such as IaaS VMs (Linux or Windows) and Azure SQL databases.
+When you create an Azure Backup for virtual machines, you need to either create a **Recovery services vault** or select an existing Recovery services vault.
+
+**Azure Storage Explorer** is a free tool from Microsoft that allows you to work with Azure Storage data on Windows, macOS, and Linux. You can use it to upload and download data from Azure blob storage.
