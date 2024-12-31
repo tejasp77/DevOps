@@ -28,8 +28,13 @@ By default, the virtual network which is registered as the registration network 
 Since we need to distribute traffic across the virtual machines, we can use either the **Load Balancer** or **Application Gateway service**.
 
 Use **Azure Advisor** to provide insights into looking at the prospect of reduction of costs.
+**Advisor** helps you optimize and reduce your overall Azure spend by identifying idle and underutilized resources. You can get cost recommendations from the Cost tab on the Advisor dashboard.
 
-**Azure Monitor** is primarily a monitoring tool that woks on metrics and diagnostics logs.
+**Azure Monitor** is primarily a monitoring tool that woks on metrics and diagnostics logs. Azure Monitor is a solution for collecting, analyzing and acting on telemetry data from resources.
+
+**Metrics** provide usage statistics like CPU, memory usage.
+
+**Customer insights**  This connects to various sources and provides all customer information at one place.
 
 The location of the resource would **remain** as it is. It’s only the resource group that changes.
 
@@ -453,3 +458,17 @@ You can monitor network connectivity across **cloud deployments** and **on-premi
 From Metrics, create a chart  **Metrics** provide usage metrics like CPU, Memory usage etc..
 
 Each NIC attached to a VM must exist in the **same location** and subscription as the VM. Each NIC must be connected to a VNet that exists in the **same Azure location** and subscription as the NIC.
+
+**IT Service Management Connector (ITSMC)** allows you to connect Azure to a supported IT Service Management (ITSM) product or service.
+Azure services like Azure Log Analytics and Azure Monitor provide tools to detect, analyze, and troubleshoot problems with your Azure and non-Azure resources. But the work items related to an issue typically reside in an ITSM product or service. ITSMC provides a bi-directional connection between Azure and ITSM tools to help you resolve issues faster.
+ITSMC supports connections with the following ITSM tools:
+- ServiceNow
+- **System Center Service Manager**
+- Provance
+- Cherwell
+
+With ITSMC, you can create work items in ITSM tool, based on your Azure alerts (metric alerts, Activity Log alerts and Log Analytics alerts).
+
+Availability zone **does not protect** from region failures.
+
+**External collaboration settings** let you turn guest invitations on or off for different types of users in your organization. You can also delegate invitations to individual users by assigning roles that allow them to invite guests.
