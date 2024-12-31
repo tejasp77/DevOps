@@ -201,7 +201,7 @@ For achieving high availability, you need to use **Availability sets**.
 - Provide a Service Level Agreement (SLA) of 99.95 percent availability.
 - Use managed disks.
 
-**Azure Traffic manager** is used for traffic distribution based on DNS queries.
+**Azure Traffic manager** is load balancer and used for traffic distribution based on DNS queries.
 
 **Owner** has permission to assign read role to user.
 **Network Contributor** does not have access to assign read roles. And if you look at the **Security admin role** , it only has the privilege to work with Security Center.
@@ -324,6 +324,7 @@ The location and subscription where this Log Analytics workspace can be created 
 The azcopy copy command copies a directory (and all of the files in that directory) to a blob container. The result is a directory in the container by the same name.
 Syntax is : **azcopy copy ” ‘https://..core.windows.net/’ –recursive**
 Append the –recursive flag to upload files in all subdirectories.
+AzCopy **does not support** copying data to Table & Queue.
 
 When you create a virtual machine (VM). You need to provide the VM administrator username and password. Instead of providing the password, you can pre-store the password in an **Azure key vault** and then customize the template to retrieve the password from the **key vault** during the deployment.
 
@@ -389,9 +390,66 @@ In Web app, **Web server logging** – Raw **HTTP request** data in the W3C exte
 
 In Azure Monitor
 **Workbooks** are for creating visual reports.
-**Service health alerts** are to get up to date information and alerts on Azure issues like service outages and planned maintenances.
+Workbooks provide a flexible canvas for data analysis and the creation of rich **visual reports** within the Azure portal. They allow you to tap into multiple data sources from across Azure, and combine them into unified interactive experiences.
+Workbooks are currently compatible with the following data sources:
+- Logs
+- Metrics
+- **Azure Resource Graph**
+- Alerts (Preview)
+- Workload Health
+- Azure Resource Health
+- Azure Data Explorer
+
+In Azure Monitor **Service health alerts** are to get up to date information and alerts on Azure issues like service outages and planned maintenances.
 
 **A Recovery Services vault** is a storage entity in Azure that houses data. The data is typically copies of data, or configuration information for virtual machines (VMs), workloads, servers, or workstations. You can use Recovery Services vaults to hold backup data for various Azure services such as IaaS VMs (Linux or Windows) and Azure SQL databases.
 When you create an Azure Backup for virtual machines, you need to either create a **Recovery services vault** or select an existing Recovery services vault.
 
 **Azure Storage Explorer** is a free tool from Microsoft that allows you to work with Azure Storage data on Windows, macOS, and Linux. You can use it to upload and download data from Azure blob storage.
+
+**SMB (Server Messgae Block)** is a network file sharing protocol that allows applications to read and write files, and request services from server programs. It can be used on top of other network protocols, such as TCP/IP.
+
+Run **Set-AzMarketplaceTerms** to accept the legal terms. Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
+Please use **Get-AzMarketplaceTerms** to get the agreement terms.
+
+From Azure PowerShell, run the **Set-AzApiManagementSubscription** cmdlet  This command sets the existing subscription details.
+
+From the Azure portal, register the Microsoft.Marketplace resource provider  This **registers Microsoft.Marketplace resource provider in the subscription**.
+
+To assign a role to a user –
+1. Sign in to the Azure portal with an account that’s a global admin or privileged role admin for the directory.
+2. Select Azure Active Directory, select Users, and then select a specific user from the list.
+3. For the selected user, select **Directory role,** select **Add role**, and then pick the appropriate admin roles from the Directory roles list, such as Conditional access administrator.
+4. Press Select to save.
+
+From the Licenses blade, assign a new license  This steps **adds a license to the user**, not a role
+
+From the Groups blade, invite the user account to a new group  This step **add users to a group**, not a role.
+
+In the Azure portal, you can manage the device administrator role on the Devices page. To open the Devices page:
+1. Sign in to your Azure portal as a global administrator.
+2. Search for and select Azure Active Directory.
+3. In the Manage section, click Devices.
+4. On the Devices page, click **Device settings**.
+To modify the device administrator role, configure Additional local administrators on Azure AD joined devices.
+
+You can’t delete a Recovery Services vault with any of the following dependencies:
+-  You can’t delete a vault that contains protected data sources (for example, IaaS VMs, **SQL databases**, Azure file shares).
+- You can’t delete a vault that contains backup data. Once backup data is deleted, it will go into the soft deleted state.
+- You can’t delete a vault that contains backup data in the soft deleted state.
+- You can’t delete a vault that has registered storage accounts.
+
+Therefore, resource group deletion will fail. You must **stop the backup** before initiating a delete.
+
+Moving the web app **does not have an impact** on app service plan. The app service plan will **remain** in its source location or resource group. Since web app is moved to a different resource group, the policies in the target resource group will be **applied**.
+
+**Network Performance Monitor** is a cloud-based hybrid network monitoring solution that helps you monitor network performance between various points in your network infrastructure. It also helps you monitor network connectivity to service and application endpoints and monitor the performance of Azure ExpressRoute.
+You can monitor network connectivity across **cloud deployments** and **on-premises locations**, multiple data centers, and branch offices and mission-critical multitier applications or microservices. With Performance Monitor, you can detect network issues before users complain.
+
+**Service Map**— Service Map automatically discovers application components on Windows and Linux systems
+**Connection troubleshoot** — enable you to troubleshoot network performance and connectivity issues in Azure
+**Effective routes** You can use effective routes to determine why you can’t connect to the VM.
+
+From Metrics, create a chart  **Metrics** provide usage metrics like CPU, Memory usage etc..
+
+Each NIC attached to a VM must exist in the **same location** and subscription as the VM. Each NIC must be connected to a VNet that exists in the **same Azure location** and subscription as the NIC.
