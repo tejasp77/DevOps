@@ -472,3 +472,96 @@ With ITSMC, you can create work items in ITSM tool, based on your Azure alerts (
 Availability zone **does not protect** from region failures.
 
 **External collaboration settings** let you turn guest invitations on or off for different types of users in your organization. You can also delegate invitations to individual users by assigning roles that allow them to invite guests.
+
+To synchronize the files in the file share named data to an on-premises server named Server1
+
+You can use Azure File Sync to centralize your organization’s file shares in Azure Files, while keeping the flexibility, performance, and compatibility of an on-premises file server. Azure File Sync transforms Windows Server into a quick cache of your Azure file share. You can use any protocol that’s available on Windows Server to access your data locally, including SMB, NFS, and FTPS. You can have as many caches as you need across the world.
+The steps are as follows.
+- **Install the Azure File Sync agent**
+- **Register Windows Server with Storage Sync Service**
+- **Create a sync group and a cloud endpoint**.
+
+If any errors occur in the target slot (for example, the production slot) after a slot swap, restore the slots to their pre-swap states by **swapping the same two slots** immediately.
+
+An app service plan can have multiple web apps. However, the app service plan should be either windows or linux based. The windows app service plan supports .NET, .NET Core and PHP whereas Linux app service plan is needed for Ruby. So, you need **two app service plans**.
+
+When the budget thresholds you’ve created are exceeded, **only notifications are triggered**. None of your resources are affected and your consumption isn’t stopped. You can use budgets to compare and track spending as you analyze costs.
+
+
+
+Scenario: PreparationLabs must meet technical requirements including:
+Ensure that VM3 can establish outbound connections over TCP port 8080 to the applications servers in the Montreal office.
+
+**IP flow verify **checks if a packet is allowed or denied to or from a virtual machine. The information consists of direction, protocol, local IP, remote IP, local port, and remote port. If the packet is denied by a security group, the name of the rule that denied the packet is returned. While any source or destination IP can be chosen, IP flow verify helps administrators quickly diagnose connectivity issues from or to the internet and from or to the on-premises environment.
+
+Scenario: Create a custom Azure role named Role1 that is based on the Reader role.
+
+**Get-AzRoleDefinition Name Reader | ConvertTo-Json**
+
+So, you need to get the reader role definition.
+
+Scenario: Ensure Azure Multi-Factor Authentication (MFA) for the users in the finance department only.
+The recommendation is to **use conditional access policies** that can then be targeted to groups of **users**, specific applications, or other conditions.
+
+While the Network Contributor role provides broad network-related permissions, it doesn’t specifically grant the necessary rights to enable Traffic Analytics. To enable Traffic Analytics, you need to assign a role that includes the permission to manage **Azure Monitor resources**.
+
+Here are the correct roles that would allow Admin1 to enable Traffic Analytics:
+
+- **Owner**: This role provides full access to all resources within the subscription, including Azure Monitor resources.
+- **Contributor**: This role also grants full access to all resources within the subscription, including Azure Monitor resources.
+- Network Contributor: This role provides broad network-related permissions, but it doesn’t include the necessary permissions to manage Azure Monitor resources.
+- Reader: This role provides read-only access to resources within the subscription and doesn’t grant any permissions to manage Azure Monitor resources.
+
+Assigning the Network Contributor role to Admin1 **does not meet** the goal of enabling Traffic Analytics. You need to assign a role that includes the permission to manage Azure Monitor resources, such as **Owner** or **Contributor**.
+
+The Reader role at the subscription level **does not grant** the necessary permissions to enable Traffic Analytics for an Azure subscription. To enable Traffic Analytics, you need to assign a role that has **Monitor** permissions at the subscription level.
+
+Here are some roles that have Monitor permissions:
+
+- Owner
+- Contributor
+- **Monitor**
+- Reader (with the “Monitor resources” permission enabled)
+
+Therefore, you need to assign one of these roles to Admin1 at the subscription level to enable Traffic Analytics.
+
+
+Ensure that App2 can only read from storage1 for the next 30 days.
+What should you configure in storage1 for App2? **Shared access signature (SAS)**
+
+**Access Control (IAM)**: IAM is used to manage access to Azure resources.
+
+The correct order to transfer 2 TB of data from Server1 to an Azure storage account using the Azure Import/Export service is:
+
+1. **Attach an external disk to Server1 and then run waimportexport.exe**: This step prepares the data for transfer by copying it to the external disk.
+2. **From the Azure portal, create an import job**: This creates a job in the Azure portal to track the import process.
+3. **From the Azure portal, update the import job**: This step provides information about the shipment, such as the carrier and tracking number.
+4. **Detach the external disks from Server1 and ship the disks to an Azure data center**: This is the final step to initiate the data transfer.
+
+Key points:
+- The Azure Import/Export service allows you to transfer large amounts of data to Azure by shipping physical disks to an Azure data center.
+- The waimportexport.exe tool is used to prepare the data on the external disks.
+- The import job in the Azure portal tracks the progress of the data transfer.
+
+By following these steps in order, you can successfully transfer your data from Server1 to the Azure storage account using the Azure Import/Export service.
+
+The three actions you should perform to connect VNet1 to the on-premises network by using a site-to-site VPN and minimize cost are:
+
+1. **Create a VPN gateway that uses the Basic SKU**: The Basic SKU is the most cost-effective option for a site-to-site VPN connection. It supports up to 100 VPN connections and is suitable for most small to medium-sized networks.
+2. **Create a gateway subnet**: You need to create a subnet within VNet1 to host the VPN gateway resources. This subnet should be in a different availability zone than the subnet that hosts your virtual machines to ensure redundancy.
+3. **Create a connection**: You need to create a connection between the VPN gateway in Azure and your on-premises VPN device. This connection will define the parameters for the VPN tunnel, such as the IP addresses, shared key, and protocol.
+
+**DevTest Labs User role** only lets you connect, start, restart, and shutdown virtual machines in your Azure DevTest Labs.
+
+**Logic App Operator** – Lets you read, enable, and disable logic apps, but not edit or update them.
+
+You need to provide the Developers group with the ability to create Azure logic apps in the Dev resource group.
+Solution: On Dev, you assign the **Contributor** role to the Developers group.
+
+Contributor Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, or share image galleries.
+
+You receive a notification that VM1 will be affected by maintenance.
+You need to move VM1 to a different host immediately.
+Solution: **From the Redeploy blade, you click Redeploy.**
+
+Instead **redeploy the VM**. If you have been facing difficulties troubleshooting Remote Desktop (RDP) connection or application access to Windows-based Azure virtual machine (VM), redeploying the VM may help. **When you redeploy a VM, Azure will shut down the VM, move the VM to a new node within the Azure infrastructure, and then power it back on, retaining all your configuration options and associated resources**.
