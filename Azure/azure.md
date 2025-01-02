@@ -565,3 +565,13 @@ You need to move VM1 to a different host immediately.
 Solution: **From the Redeploy blade, you click Redeploy.**
 
 Instead **redeploy the VM**. If you have been facing difficulties troubleshooting Remote Desktop (RDP) connection or application access to Windows-based Azure virtual machine (VM), redeploying the VM may help. **When you redeploy a VM, Azure will shut down the VM, move the VM to a new node within the Azure infrastructure, and then power it back on, retaining all your configuration options and associated resources**.
+
+The **Microsoft Azure Data Box** cloud solution lets you send terabytes of data into and out of Azure in a quick, inexpensive, and reliable way. The secure data transfer is accelerated by shipping you a proprietary Data Box storage device. Each storage device has a maximum usable storage capacity of 80 TB and is transported to your datacenter through a regional carrier. The device has a rugged casing to protect and secure data during the transit.
+
+If SSPR is enabled, you must select at least one of the following options for the authentication methods. Sometimes you hear these options referred to as “gates.” We highly recommend that you choose two or more authentication methods so that your users have more flexibility in case they are unable to access one when they need it.
+- **Mobile app notification**
+- Mobile app code
+- **Email**
+- **Mobile phone**
+- Office phone
+- **Security questions**
